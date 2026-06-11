@@ -1,0 +1,105 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta http-equiv="refresh" content="300">
+<title>Priority Plus Plumbing — Progress tracker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+:root{--font:'Manrope',-apple-system,system-ui,sans-serif;--bg-dark:#1C191A;--bg-dark-2:#241f20;--glow:rgba(186,54,52,.42);--bg-light:#F6F5F2;--ink:#1C191A;--body:#39342f;--muted:#8d8a85;--card:#ECEAE6;--card-line:#E0DDD7;--accent:#BA3634;--rule:#E6E3DE;--on-dark:#F6F5F2;--on-dark-dim:#a59d99;--done:#BA3634;}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);color:var(--body);margin:0;background:#3a3a3a;-webkit-font-smoothing:antialiased;line-height:1.55}
+.wrap{max-width:880px;margin:0 auto;background:var(--bg-light);min-height:100vh}
+@media screen and (min-width:920px){body{padding:28px 0}.wrap{min-height:0;border-radius:14px;overflow:hidden;box-shadow:0 14px 50px rgba(0,0,0,.34)}}
+.hdr{background:radial-gradient(60% 90% at 82% 20%,var(--glow),transparent 60%),linear-gradient(180deg,var(--bg-dark),var(--bg-dark-2));color:var(--on-dark);padding:30px 40px 34px}
+.hdr .top{display:flex;justify-content:space-between;align-items:center;gap:16px}
+.hdr .logo{height:24px;width:auto;object-fit:contain;display:block}
+.hdr .eyebrow{font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--on-dark-dim)}
+.hdr h1{font-weight:800;font-size:30px;line-height:1.05;letter-spacing:-.02em;margin:18px 0 2px;color:var(--on-dark)}
+.hdr .sub{color:var(--on-dark-dim);font-size:14px;margin:0}
+.hero{padding:30px 40px 8px;display:flex;align-items:center;gap:26px}
+.ring{--p:0;flex:0 0 auto;width:104px;height:104px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--accent) calc(var(--p)*1%),var(--card-line) 0);}
+.ring .inner{width:82px;height:82px;border-radius:50%;background:var(--bg-light);display:grid;place-items:center}
+.ring .pct{font-weight:800;font-size:26px;color:var(--ink);letter-spacing:-.02em}
+.ring .pct small{font-size:13px;font-weight:700;color:var(--muted)}
+.hero .htxt{min-width:0}
+.hero .hk{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0 0 4px}
+.hero .hs{font-weight:800;font-size:22px;color:var(--ink);letter-spacing:-.01em;margin:0 0 6px;line-height:1.1}
+.hero .hb{font-size:15px;color:var(--body);margin:0;max-width:52ch}
+.steps{list-style:none;margin:8px 0 0;padding:26px 40px 8px;display:flex;gap:0;position:relative;justify-content:space-between}
+.steps::before{content:"";position:absolute;left:64px;right:64px;top:50px;height:2px;background:var(--card-line);z-index:0}
+.node{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;text-align:center;flex:1 1 0;min-width:0}
+.bead{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:var(--card);border:2px solid var(--card-line);color:var(--muted);transition:.2s}
+.bead svg{width:22px;height:22px}
+.node .ndata{margin-top:10px}
+.nname{font-size:12.5px;font-weight:700;color:var(--ink);line-height:1.2;padding:0 4px}
+.ntag{font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:3px}
+.node.done .bead{background:var(--done);border-color:var(--done);color:#fff}
+.node.done .ntag{color:var(--accent)}
+.node.current .bead{background:#fff;border-color:var(--accent);color:var(--accent);box-shadow:0 0 0 5px rgba(186,54,52,.14)}
+.node.current .ntag{color:var(--accent)}
+.node.current .nname{color:var(--accent)}
+.callout{margin:18px 40px 6px;background:var(--card);border-left:4px solid var(--accent);border-radius:0 10px 10px 0;padding:16px 20px}
+.callout .ck{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:5px}
+.callout p{margin:0;font-size:15px;color:var(--body)}.callout b{color:var(--ink)}
+.foot{margin-top:18px;border-top:1px solid var(--rule);padding:18px 40px 30px;color:var(--muted);font-size:12.5px;display:flex;flex-direction:column;gap:8px}
+.foot .contact{color:var(--body);font-size:14px}
+.foot .meta{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+@media (max-width:680px){
+  .hdr,.hero,.foot{padding-left:22px;padding-right:22px}
+  .hero{flex-direction:row;gap:18px}
+  .ring{width:88px;height:88px}.ring .inner{width:68px;height:68px}.ring .pct{font-size:22px}
+  .steps{flex-direction:column;padding:22px 22px 4px;gap:0}
+  .steps::before{left:43px;right:auto;top:24px;bottom:24px;width:2px;height:auto}
+  .node{flex-direction:row;align-items:center;text-align:left;gap:14px;padding:8px 0}
+  .node .ndata{margin-top:0}
+  .nname{padding:0}
+}
+</style></head>
+<body><div class="wrap">
+<header class="hdr">
+  <div class="top">
+    <img class="logo" src="data:image/svg+xml;base64,PHN2ZyBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJ4TWlkWU1pZCBtZWV0IiB3aWR0aD0iMjM1LjEyNSIgaGVpZ2h0PSIzNiIgb3ZlcmZsb3c9InZpc2libGUiIHN0eWxlPSJkaXNwbGF5OiBibG9jazsiIHZpZXdCb3g9IjAgMCAyMzUuMTI1IDM2IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8ZyBpZD0iTGF5ZXJfMSIgY2xpcC1wYXRoPSJ1cmwoI2NsaXAwXzBfNCkiPgo8ZyBpZD0iR3JvdXAiPgo8cGF0aCBpZD0iVmVjdG9yIiBkPSJNMTcuNjI5OCA5LjkxMjIzQzE2LjU1MyA3Ljg1NDE1IDE0LjM1NTYgNi4wNzk2OSAxMS42OTI2IDYuMDc5NjlDNy43NjM1MyA2LjA3OTY5IDcuNjY4OTQgOS4wMjUgNy42Njg5NCA5LjM5NTg5QzcuNjY4OTQgMTEuODI0OSA5LjkwOTk2IDEyLjgwNjYgMTIuMDIgMTMuNTU1N0wxNi4zNzExIDE1LjE0ODNDMTguNDMwMiAxNS44OTc0IDIwLjg2MDQgMTcuMzAwOSAyMi4yMTM3IDE5LjE2OTlDMjIuNjM1NyAxOS43Mjk5IDI0LjEyNzMgMjEuOTc3MSAyNC4xMjczIDI1LjE5ODdDMjQuMTI3MyAyNi43NDA1IDI0LjEyNzMgMzEuMzIyMSAxOS4yNjY5IDM0LjI2NzRDMTcuMjU4NyAzNS40ODE4IDE0LjQwNjUgMzUuOTk4MiAxMi42NzQ4IDM1Ljk5ODJDNi42NDMwMiAzNS45OTgyIDMuMDkyMzEgMzQuNTUxIDAgMjkuMDMxM0w1Ljg0MjY1IDI1LjE1NTFDNy4xMDE0MSAyOC4wNDk1IDkuMzkzMzYgMjkuODMxMiAxMi4zNDAyIDI5LjgzMTJDMTMuOTc3MyAyOS44MzEyIDE2LjkyNDEgMjkuMDgyMiAxNi45MjQxIDI1Ljk1NTFDMTYuOTI0MSAyMy4zODc5IDE1LjUxOTggMjIuODIwNyAxMC4zNzU2IDIwLjgxMzVDNS4xODc4MSAxOC43OTE4IDAuNjk4NDk5IDE2LjUwMSAwLjY5ODQ5OSA5LjcyMzE1QzAuNjk4NDk5IDQuMDY1MjUgNC44MTY3MyAwIDExLjg3NDUgMEMxNi45MjQxIDAgMjAuNDgyIDIuMDU4MDggMjMuMjgzMyA2LjE2Njk2TDE3LjYyMjYgOS45MDQ5NUwxNy42Mjk4IDkuOTEyMjNaIiBmaWxsPSIjRkZGRkZGIi8+CjxwYXRoIGlkPSJWZWN0b3JfMiIgZD0iTTI3Ljc3OTkgMTIuODA2N0MyNy43Nzk5IDkuMzAxMzggMjguMzgzOCA1LjkzNDI3IDMwLjc3MDMgMy4zMTYyMkMzMi45MjQgMC45MzgxNjIgMzYuMTQ3MyAwLjA0MzY2MjEgMzkuMzc3OSAwLjA0MzY2MjFDNDIuODg0OSAwLjA0MzY2MjEgNDYuMTA4MiAwLjg4NzI1NiA0OC40MDAyIDMuMzU5ODZDNTAuMzEzOCA1LjQxNzk0IDUxLjM5MDYgOC40NTc3OCA1MS4zOTA2IDEzLjk3MDJWMjIuMjg5OEM1MS4zOTA2IDI3LjEwNDEgNTAuNTk3NSAzMC4xODc2IDQ4LjQ0MzggMzIuNTI5M0M0NS41OTE2IDM1LjYxMjggNDEuNDczNCAzNS45NCAzOS4yNzYgMzUuOTRDMzUuOTA3MiAzNS45NCAzMC4zOTIgMzQuNzI1NSAyOC42NjAzIDI4LjkyOTVDMjcuOTEwOSAyNi41MDA1IDI3Ljc3MjYgMjMuNTA0MyAyNy43NzI2IDIyLjAxMzVWMTIuODA2N0gyNy43Nzk5Wk0zNS40NDg4IDIzLjU1NTJDMzUuNDQ4OCAyNy4xNTUgMzYuMTQ3MyAyOS43MjIyIDM5LjUxNjEgMjkuNzIyMkM0My41ODM0IDI5LjcyMjIgNDMuNTgzNCAyNS45MzMzIDQzLjU4MzQgMjMuNTU1MlYxMS42MzU4QzQzLjU4MzQgOS4yNTA0NyA0My41ODM0IDYuMzU2MDcgMzkuNjEwNyA2LjM1NjA3QzM1LjYzOCA2LjM1NjA3IDM1LjQ0ODggMTAuMjgzMSAzNS40NDg4IDExLjYzNThWMjMuNTU1MloiIGZpbGw9IiNGRkZGRkYiLz4KPHBhdGggaWQ9IlZlY3Rvcl8zIiBkPSJNNzEuOTY3MiAwLjY5ODE0N0w4MS44NzcyIDM1LjAwMTlINzQuNTM1N0w3Mi44MDQgMjguMTgwNEg2Mi4yODI4TDYwLjUwNzUgMzUuMDAxOUg1My4xNjZMNjIuODUwNCAwLjY5ODE0N0g3MS45NjcyWk02Ny41Mjg5IDYuODIxNDdINjcuMzM5N0w2My41OTk4IDIyLjM0MDdINzEuMzEyNEw2Ny41MjE2IDYuODIxNDdINjcuNTI4OVoiIGZpbGw9IiNGRkZGRkYiLz4KPHBhdGggaWQ9IlZlY3Rvcl80IiBkPSJNODUuMjAyMyAwLjY5ODE0N0g5Ni41MTY2QzEwMS41NjYgMC42OTgxNDcgMTA0LjI4IDEuNzc0NDYgMTA2LjA5OSAzLjQxMDc0QzEwOC4yNTMgNS4zMjMzNyAxMDkuMjM1IDguMDg2ODcgMTA5LjIzNSAxMS40OTc2QzEwOS4yMzUgMTYuODI4MiAxMDYuMjg4IDE5LjM1MTggMTA0Ljc0NiAyMC4yODI2QzEwMi4yNjUgMjEuNzgwNyA5OS41NTggMjEuOTE4OSA5Ni44ODc2IDIyLjAxMzRMOTIuNzY5NCAyMi4xNTE2VjM1LjAwMTlIODUuMTk1MVYwLjY5ODE0N0g4NS4yMDIzWk05Mi43NzY3IDE2LjQwNjRDOTYuMzc4MyAxNi40MDY0IDk3LjczMTcgMTYuNDA2NCA5OC42MTkzIDE2LjAzNTZDOTkuMjMwNSAxNS44MDI4IDEwMS4zNzcgMTQuNzcwMiAxMDEuMzc3IDExLjI2NDlDMTAxLjM3NyA3Ljk0ODY5IDEwMC4xMTEgNy4yNDMyNyA5OS4wODUgNi44MjE0N0M5Ny44Njk5IDYuMzU2MDQgOTcuMzA5NyA2LjM1NjA0IDkyLjc2OTQgNi4zNTYwNFYxNi40MDY0SDkyLjc3NjdaIiBmaWxsPSIjRkZGRkZGIi8+CjxwYXRoIGlkPSJWZWN0b3JfNSIgZD0iTTExMy41MjEgMC42OTgxNDdIMTI0LjgzNUMxMjcuNzgyIDAuNjk4MTQ3IDEzMC42MzQgMC44ODcyMjggMTMyLjU5OCAyLjEwMTcxQzEzNS4xMjMgMy42NDM0NSAxMzYuMjk1IDYuNTQ1MTIgMTM2LjI5NSA5LjM5NTg5QzEzNi4yOTUgMTMuNTU1NyAxMzQuMjM2IDE2LjIxNzQgMTMxLjU3MiAxNi44MjgyVjE3LjA2MUMxMzMuODY0IDE3LjM4ODIgMTM3LjA0NCAxOS44NjgxIDEzNy4wNDQgMjQuOTE1MUMxMzcuMDQ0IDI3LjQzODYgMTM2LjY3MyAzMC4wMDU4IDEzNC4zODEgMzIuMjk2NkMxMzEuOSAzNC44MjAxIDEyOC45NTMgMzUuMDA5MSAxMjQuNjA5IDM1LjAwOTFIMTEzLjUyOFYwLjY5ODE0N0gxMTMuNTIxWk0xMjAuODY5IDE0LjY3NTZDMTI2LjkwMSAxNC42NzU2IDEyOC44NjYgMTQuNDg2NSAxMjguODY2IDEwLjE0NDlDMTI4Ljg2NiA1LjgwMzM0IDEyNS44MjQgNS45ODUxNSAxMjQuMjgyIDUuOTg1MTVIMTIwLjg2OVYxNC42ODI5VjE0LjY3NTZaTTEyMC44NjkgMjkuNTg0SDEyNC42MDlDMTI3LjYgMjkuNTg0IDEyOS40NyAyOC4xODA0IDEyOS40NyAyNC42NzUxQzEyOS40NyAyMy4wMzg4IDEyOS4wNDggMjEuMTI2MiAxMjcuMjcyIDIwLjM3NzJDMTI2LjE5NiAxOS45NTU0IDEyMy41MzIgMTkuOTU1NCAxMjAuODY5IDE5Ljk1NTRWMjkuNTg0WiIgZmlsbD0iI0ZGRkZGRiIvPgo8cGF0aCBpZD0iVmVjdG9yXzYiIGQ9Ik0xNDAuOTQ0IDEyLjgwNjdDMTQwLjk0NCA5LjMwMTM4IDE0MS41NDggNS45MzQyNyAxNDMuOTM0IDMuMzE2MjJDMTQ2LjA4OCAwLjkzMDg5IDE0OS4zMTEgMC4wNDM2NjIxIDE1Mi41NDIgMC4wNDM2NjIxQzE1Ni4wNDkgMC4wNDM2NjIxIDE1OS4yNzIgMC44ODcyNTYgMTYxLjU2NCAzLjM1OTg2QzE2My40NzggNS40MTc5NCAxNjQuNTU1IDguNDU3NzggMTY0LjU1NSAxMy45NzAyVjIyLjI4OThDMTY0LjU1NSAyNy4xMDQxIDE2My43NjIgMzAuMTg3NiAxNjEuNjA4IDMyLjUyOTNDMTU4Ljc1NiAzNS42MTI4IDE1NC42MzggMzUuOTQgMTUyLjQ0IDM1Ljk0QzE0OS4wNzEgMzUuOTQgMTQzLjU1NiAzNC43MjU1IDE0MS44MjQgMjguOTI5NUMxNDEuMDc1IDI2LjUwMDUgMTQwLjkzNyAyMy41MDQzIDE0MC45MzcgMjIuMDEzNVYxMi44MDY3SDE0MC45NDRaTTE0OC42MTMgMjMuNTU1MkMxNDguNjEzIDI3LjE1NSAxNDkuMzExIDI5LjcyMjIgMTUyLjY4IDI5LjcyMjJDMTU2Ljc0OCAyOS43MjIyIDE1Ni43NDggMjUuOTMzMyAxNTYuNzQ4IDIzLjU1NTJWMTEuNjM1OEMxNTYuNzQ4IDkuMjUwNDcgMTU2Ljc0OCA2LjM1NjA3IDE1Mi43NzUgNi4zNTYwN0MxNDguODAyIDYuMzU2MDcgMTQ4LjYxMyAxMC4yODMxIDE0OC42MTMgMTEuNjM1OFYyMy41NTUyWiIgZmlsbD0iI0ZGRkZGRiIvPgo8cGF0aCBpZD0iVmVjdG9yXzciIGQ9Ik0xNzUuMDE4IDE3LjE5OTFMMTY1LjI0NiAwLjY5ODE0N0gxNzMuMjg2TDE3Ny40MDQgNy45NDE0MkMxNzcuNzMyIDguNTAxMzkgMTc4LjkwMyAxMC45MzA0IDE3OS4xOCAxMS40NDY3SDE3OS40NjNDMTgwLjMwNyA5LjgxMDQxIDE4MC40MDIgOS42NzIyNCAxODEuMzMzIDcuODk3NzhMMTg1LjIxMSAwLjY5ODE0N0gxOTMuMzk3TDE4My44MDcgMTcuMDUzN0wxOTQuMDUyIDM1LjAwMTlIMTg1LjkxN0wxODEuMzMzIDI2LjMxMTRDMTgwLjI1NiAyNC4zMDQyIDE4MC4xNjIgMjQuMDcxNSAxNzkuNjUzIDIyLjk5NTJIMTc5LjM2OUMxNzguNjcgMjQuMzA0MiAxNzguNTc2IDI0LjUzNjkgMTc3LjU5MyAyNi40MDU5TDE3My4xOTkgMzUuMDA5MUgxNjUuMDY0TDE3NS4wMjUgMTcuMTk5MUgxNzUuMDE4WiIgZmlsbD0iI0ZGRkZGRiIvPgo8L2c+CjxwYXRoIGlkPSJWZWN0b3JfOCIgZD0iTTIzMS41NzQgMC41MjM2NDRDMjI0LjUxNyAwLjUyMzY0NCAyMjQuNTE3IDAuNzc4MTc3IDIxNy40NTkgMC43NzgxNzdDMjEwLjQwMSAwLjc3ODE3NyAyMTAuNDAxIDEuNDE4MTQgMjAzLjM0MyAxLjQxODE0QzIwMS42NTUgMS40MTgxNCAxOTkuNjMzIDIuMzI3MTkgMTk5LjYzMyA0LjAxNDM4QzE5OS42MzMgMTEuMDY4NiAyMDAuODk5IDExLjA2ODYgMjAwLjg5OSAxOC4xMjI4QzIwMC44OTkgMjUuMTc2OSAyMDAuNTkzIDI1LjE3NjkgMjAwLjU5MyAzMi4yMzExQzIwMC41OTMgMzMuOTE4MyAyMDEuNjQ4IDM0LjY4OTIgMjAzLjMzNiAzNC42ODkyQzIxMC4zOTQgMzQuNjg5MiAyMTAuMzk0IDM1LjI1NjQgMjE3LjQ1MiAzNS4yNTY0QzIyNC41MDkgMzUuMjU2NCAyMjQuNTA5IDM0LjczMjggMjMxLjU2NyAzNC43MzI4QzIzMy4yNjIgMzQuNzMyOCAyMzQuNjM4IDMzLjkyNTYgMjM0LjYzOCAzMi4yMzExQzIzNC42MzggMjUuMTc2OSAyMzUuMTE4IDI1LjE3NjkgMjM1LjExOCAxOC4xMjI4QzIzNS4xMTggMTEuMDY4NiAyMzQuNTcyIDExLjA2ODYgMjM0LjU3MiA0LjAxNDM4QzIzNC41NzIgMi4zMjcxOSAyMzMuMjYyIDAuNTIzNjQ0IDIzMS41NjcgMC41MjM2NDRIMjMxLjU3NFpNMjA5LjQ1NSAyMC45NTE3QzIwNy43NDUgMjAuOTUxNyAyMDYuNTQ1IDIwLjAwNjMgMjA2LjU0NSAxOC4yOTczQzIwNi41NDUgMTYuNTg4MyAyMDcuNzUzIDE0Ljc0MTEgMjA5LjQ1NSAxNC43NDExQzIxMS4xNTggMTQuNzQxMSAyMTEuODkzIDE2LjU4ODMgMjExLjg5MyAxOC4yOTczQzIxMS44OTMgMjAuMDA2MyAyMTEuMTU4IDIwLjk1MTcgMjA5LjQ1NSAyMC45NTE3Wk0yMTQuNTQxIDI1Ljk1NTFDMjEzLjYxNyAyNS4wNzUxIDIxMy42NDYgMjIuODM1MiAyMTQuNzc0IDIwLjUwMDhDMjE1LjkwMiAxOC4xNjY0IDIxMi40MDkgMTAuNjI1IDIxMy4yOTcgOS43MDg2NEMyMTQuMTg1IDguNzkyMzIgMjIwLjE4IDE3LjY1MDEgMjE4LjQ2MyAyMS4xNzcxQzIxNi43NDYgMjQuNzA0MiAyMTUuNDY1IDI2LjgzNSAyMTQuNTQxIDI1Ljk1NTFaTTIyNC4xMDIgMjMuMTQwN0MyMjIuMDIxIDI4LjM2OTUgMjIwLjA3OCAzMS45ODM5IDIxOS4xNTQgMzEuMTAzOUMyMTguMjMgMzAuMjI0IDIxOC4zOTcgMjUuOTI2IDIyMC4xODcgMjEuNjEzNUMyMjEuOTg0IDE3LjI5MzcgMjE3Ljk1NCA2Ljg0MzMzIDIxOC44MzQgNS45MTk3NEMyMTkuNzE0IDQuOTk2MTUgMjIzLjgzMyAxMS4wODMxIDIyNC43NTcgMTIuODA2N0MyMjUuNjgxIDE0LjUzMDIgMjI2LjgwOCAxNS41MDQ3IDIyNi44MDggMTcuOTU1NUMyMjYuODA4IDIwLjQwNjMgMjI1LjM5NyAyMC41MzcyIDIyNC4wOTUgMjMuMTQwN0gyMjQuMTAyWiIgZmlsbD0iI0JBMzYzNCIvPgo8L2c+CjxkZWZzPgo8Y2xpcFBhdGggaWQ9ImNsaXAwXzBfNCI+CjxyZWN0IHdpZHRoPSIyMzUuMTI1IiBoZWlnaHQ9IjM2IiBmaWxsPSJ3aGl0ZSIvPgo8L2NsaXBQYXRoPgo8L2RlZnM+Cjwvc3ZnPgo=" alt="Soapbox">
+    <span class="eyebrow">Project tracker</span>
+  </div>
+  <h1>Priority Plus Plumbing</h1>
+  <p class="sub">Trust Gap Brand Audit · Stage 1</p>
+</header>
+<section class="hero">
+  <div class="ring" style="--p:21"><div class="inner"><div class="pct">21<small>%</small></div></div></div>
+  <div class="htxt">
+    <p class="hk">You are here</p>
+    <p class="hs">Intake &amp; inputs</p>
+    <p class="hb">You complete the checklist and share your inputs. We review within 5 business days and flag any gaps.</p>
+  </div>
+</section>
+<ol class="steps"><li class="node done">
+      <div class="bead"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4 10-10"/></svg></div>
+      <div class="ndata"><div class="nname">Kickoff &amp; onboarding</div><div class="ntag">Done</div></div>
+    </li><li class="node current">
+      <div class="bead"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="4" width="12" height="17" rx="2"/><path d="M9 4V3h6v1M9 10h6M9 14h6"/></svg></div>
+      <div class="ndata"><div class="nname">Intake &amp; inputs</div><div class="ntag">In progress</div></div>
+    </li><li class="node todo">
+      <div class="bead"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-4 4V5z"/><path d="M8 10h8M8 13h5"/></svg></div>
+      <div class="ndata"><div class="nname">Discovery workshop</div><div class="ntag">Up next</div></div>
+    </li><li class="node todo">
+      <div class="bead"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4-4"/></svg></div>
+      <div class="ndata"><div class="nname">Research &amp; benchmarking</div><div class="ntag">Up next</div></div>
+    </li><li class="node todo">
+      <div class="bead"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/></svg></div>
+      <div class="ndata"><div class="nname">Touchpoint analysis</div><div class="ntag">Up next</div></div>
+    </li><li class="node todo">
+      <div class="bead"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h6M10 17h6"/></svg></div>
+      <div class="ndata"><div class="nname">Report development</div><div class="ntag">Up next</div></div>
+    </li><li class="node todo">
+      <div class="bead"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M12 16v4M8 20h8M8 9l3 3 4-5"/></svg></div>
+      <div class="ndata"><div class="nname">Delivery &amp; walkthrough</div><div class="ntag">Up next</div></div>
+    </li></ol>
+<div class="callout"><div class="ck">Over to you</div><p>We are ready for the next step and waiting on you for <b>Intake &amp; inputs</b>. You complete the checklist and share your inputs. We review within 5 business days and flag any gaps.</p></div>
+<footer class="foot">
+  <div class="contact">Questions? Just reply to your latest email from us and we will jump on it.</div>
+  <div class="meta"><span>Last updated 11 June 2026, 11:16 am</span><span>Soapbox Design Studio Pty Ltd&nbsp;&nbsp;·&nbsp;&nbsp;ABN 83 628 371 862</span></div>
+</footer>
+</div></body></html>
